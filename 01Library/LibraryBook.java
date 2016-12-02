@@ -20,15 +20,9 @@ abstract class LibraryBook extends Book implements Comparable<LibraryBook>{
     abstract String circulationStatus();
 
     public int compareTo(LibraryBook a){
-	int zel = 0;
-	if (Integer.parseInt(this.callNumber) > Integer.parseInt(a.callNumber)){
-	    zel = 1;
-	}
-	else{
-	    if (Integer.parseInt(this.callNumber) != Integer.parseInt(a.callNumber)){
-		zel = -1;
-	    }}
-	return zel;
+	return ((this.callNumber).compareTo(a.callNumber));
+        
+	
     }
 
     public String toString(){
