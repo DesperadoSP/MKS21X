@@ -3,7 +3,7 @@ public class Barcode implements Comparable<Barcode>{
     private int _checkDigit;
     public Barcode(String zip){
 	if (zip.length() != 5){
-	    System.out.println("Zip code has to be 5 digits");
+	    throw new IllegalArgumentException("Zip has to have a length of 5");
 	}
 	else{
 	    _zip = zip;
@@ -36,7 +36,8 @@ public class Barcode implements Comparable<Barcode>{
 
     public static String toCode(String z){
 	Barcode t = new Barcode(z);
-	return t.toString();
+	String p = t.toString();
+	return p.substring(6);
     }
 
     public static String toZip(String q){
@@ -48,6 +49,9 @@ public class Barcode implements Comparable<Barcode>{
 		while(w.length() > 5){
 		    String x = w.substring(0, 5);
 		    w = w.substring(5);
+		    for (int d = 0; d < x.length(); d++){
+			if (x.charAt(d) != '|' && x.charAt(d) != ':'){
+			    throw new IllegalArgumentException("Non-barcode characters were used");}}
 		    if (x.equals(":::||")){
 			b += 1;
 		    }else if (x.equals("::|:|")){
@@ -135,7 +139,8 @@ public class Barcode implements Comparable<Barcode>{
 	    }
 	}
 	zel += "|";
-	return zel;
+        z += zel;
+      return z;
     }
 
     public int compareTo(Barcode other){
@@ -148,8 +153,12 @@ public class Barcode implements Comparable<Barcode>{
 	}else{return -1;
 	}
     }
-    
-
+    public static void main(String[]args){
+        Barcode a = new Barcode("02345");
+        Barcode b = new Barcode("12345");
+	System.out.println(a.compareTo(b));
+       
+    }
 }
 
 
