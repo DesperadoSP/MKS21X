@@ -34,6 +34,77 @@ public class Barcode implements Comparable<Barcode>{
 	    
     }
 
+    public static String toCode(String z){
+	Barcode t = new Barcode(z);
+	return t.toString();
+    }
+
+    public static String toZip(String q){
+	String b = "";
+	String w = q;
+	if(w.length() == 32){
+	    if (w.charAt(0) == '|' && w.charAt(31) == '|'){
+		w = w.substring(1, 31);
+		while(w.length() > 5){
+		    String x = w.substring(0, 5);
+		    w = w.substring(5);
+		    if (x.equals(":::||")){
+			b += 1;
+		    }else if (x.equals("::|:|")){
+			b += 2;
+		    }else if (x.equals("::||:")){
+			b += 3;
+		    }else if (x.equals(":|::|")){
+			b += 4;
+		    }else if (x.equals(":|:|:")){
+			b += 5;
+		    }else if (x.equals(":||::")){
+			b += 6;
+		    }else if (x.equals("|:::|")){
+			b += 7;
+		    }else if (x.equals("|::|:")){
+			b += 8;
+		    }else if (x.equals("|:|::")){
+			b += 9;
+		    }else if (x.equals("||:::")){
+			b += 0;
+		    }else {
+			throw new IllegalArgumentException("Pattern mismatch");
+		    }
+		}
+		Barcode h = new Barcode(b);
+		int u = h._checkDigit;
+		if (u == 1 && w.equals(":::||")){
+		    b += u;
+		}else if (u == 2 && w.equals("::|:|")){
+		    b += u;
+		}else if (u == 3 && w.equals("::||:")){
+		    b += u;
+		}else if (u == 4 && w.equals(":|::|")){
+		    b += u;
+		}else if (u == 5 && w.equals(":|:|:")){
+		    b += u;
+		}else if (u == 6 && w.equals(":||::")){
+		    b += u;
+		}else if (u == 7 && w.equals("|:::|")){
+		    b += u;
+		}else if (u == 8 && w.equals("|::|:")){
+		    b += u;
+		}else if (u == 9 && w.equals("|:|::")){
+		    b += u;
+		}else if (u == 0 && w.equals("||:::")){
+		    b += u;
+		}else {throw new IllegalArgumentException("CheckDigit is not correct");
+		}
+		return b.substring(0, 5);
+	    }else {throw new IllegalArgumentException("Beginning and end are not barcodes");
+	    }
+	}else {throw new IllegalArgumentException("Barcode is not correct length");
+	}
+    }
+			
+		
+
     public String toString(){
 	String zel = "|";
         String z = _zip + _checkDigit;
@@ -77,12 +148,7 @@ public class Barcode implements Comparable<Barcode>{
 	}else{return -1;
 	}
     }
-    public static void main(String[]args){
-	Barcode f = new Barcode("08451");
-	System.out.println(f._checkDigit);
-        
-	System.out.println(f);
-    }
+    
 
 }
 
