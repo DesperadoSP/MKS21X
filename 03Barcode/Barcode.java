@@ -10,7 +10,7 @@ public class Barcode implements Comparable<Barcode>{
 	    try{
 	    _checkDigit = checkSum();
 	    }catch (NumberFormatException e){
-		System.out.println("Zip code has to be made up of digits");
+	        throw new IllegalArgumentException("Zip has to be made up of only digits");
 	    }
 	}
 	}
@@ -153,12 +153,7 @@ public class Barcode implements Comparable<Barcode>{
 	}else{return -1;
 	}
     }
-    public static void main(String[]args){
-        Barcode a = new Barcode("02345");
-        Barcode b = new Barcode("12345");
-	System.out.println(a.compareTo(b));
-       
-    }
+    
 }
 
 
