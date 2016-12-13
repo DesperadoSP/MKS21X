@@ -6,12 +6,14 @@ public class Sorts{
     public static void selectionSort(int[] data){
 	for (int i = 0; i < data.length; i++){
 	    int z = data[i];
+	    int e = 0;
 	    for (int j = i; j < data.length; j++){
 		if (data[j] <= z){
 		    z = data[j];
+		    e = j;
 		}
 		if(j == data.length - 1){
-		    data[indexOf(z)] = data[i];
+		    data[e] = data[i];
 		}
     
 
@@ -21,7 +23,7 @@ public class Sorts{
     }
 
     public static void main(String[]args){
-	int[] q = {5, 7, 2, 6};
+	int[] q = {5, 7, 7, 32, 4, 0, 63};
 	selectionSort(q);
 	for(int i : q){
 	    System.out.println(i);
