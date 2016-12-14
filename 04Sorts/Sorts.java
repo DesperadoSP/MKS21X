@@ -22,9 +22,36 @@ public class Sorts{
 	}
     }
 
+    public static void insertionSort(int[]data){
+        for(int i = 1; i < data.length; i++){
+	    int z = data[i];
+	    for (int j = i - 1; j >= 0; j--){
+                if (j == 0){
+		    if (z
+	       
+		}
+	    }
+	}
+     
+		    
+
+
+	    
+            
+            
+
+
+
+
+
+
+
+
+    
+
     public static void main(String[]args){
 	int[] q = {5, 7, 7, 32, 4, 0, 63};
-	selectionSort(q);
+	insertionSort(q);
 	for(int i : q){
 	    System.out.println(i);
 	}
