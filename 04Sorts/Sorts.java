@@ -25,13 +25,18 @@ public class Sorts{
     public static void insertionSort(int[]data){
         for(int i = 1; i < data.length; i++){
 	    int z = data[i];
-	    for (int j = i - 1; j >= 0; j--){
-                if (j == 0){
-		    if (z
+	    
+	    for (int j = i; j > 0; j--){
+		if (data[j] < data[j - 1]){
+		    z = data[j];
+		    data[j] = data[j - 1];
+		    data[j - 1] = z;
+	        
 	       
 		}
 	    }
 	}
+    }
      
 		    
 
