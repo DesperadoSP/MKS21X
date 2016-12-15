@@ -37,29 +37,31 @@ public class Sorts{
 	    }
 	}
     }
+
+    public static void bubbleSort(int[]data){
+        String x = "2";
+        while (!"1".equals(x)){
+	    x  = "1";
+        for (int i = 0; i < data.length - 1; i++){
+	     if (data[i] > data[i + 1]){
+		x = "0";
+		int z = data[i];
+		data[i] = data[i + 1];
+		data[i + 1] = z;
+	    }
+	}
+    }
+    }
      
-		    
-
-
-	    
-            
-            
-
-
-
-
-
-
-
-
-    
-
-    public static void main(String[]args){
-	int[] q = {5, 7, 7, 32, 4, 0, 63};
-	insertionSort(q);
-	for(int i : q){
+	public static void main(String[]args){
+	int[] q = {5675, 1446, 8975, 4, 0, 65747, 43};
+	bubbleSort(q);
+        for(int i : q){
 	    System.out.println(i);
 	}
+        
+        
+
 
 
     }
