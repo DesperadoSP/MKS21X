@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Sorts{
     public static String name(){
 	return "06.Zhu.Edwin";
@@ -52,13 +53,14 @@ public class Sorts{
 	}
     }
     }
+
+
+
      
 	public static void main(String[]args){
-	int[] q = {5675, 1446, 8975, 4, 0, 65747, 43};
+	    int[] q = {};
 	bubbleSort(q);
-        for(int i : q){
-	    System.out.println(i);
-	}
+        System.out.println(Arrays.toString(q));
         
         
 
